@@ -17,6 +17,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import UIKit
+//import Common
 
 /// Hyperwallet's enum to indicate processing state
 public enum ProcessingState: CustomStringConvertible {
@@ -75,9 +76,8 @@ public final class ProcessingView: UIView {
     }
    /// Convenience Initializer
     public convenience init() {
-        guard let view = UIApplication.shared.keyWindow!.rootViewController?.view
-            else {
-                fatalError("Unexpected error: can't get access to the rootViewController")
+        guard let view = UIApplication.shared.topmostViewController_mn()?.view else {
+            fatalError("Unexpected error: can't get access to the rootViewController")
         }
         self.init(showInView: view)
     }

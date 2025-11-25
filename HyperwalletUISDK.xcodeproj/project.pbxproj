@@ -522,6 +522,7 @@
 		FDFEAE82267F7978006FA27B /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFEAE81267F7978006FA27B /* CurrencyFormatter.swift */; };
 		FDFEAE97267F7AA4006FA27B /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDFEAE96267F7AA4006FA27B /* Currency.swift */; };
 		FDFEAF30267F7E49006FA27B /* StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A0AD2C2538CC6100B338B8 /* StringTests.swift */; };
+		FF43BB462ED627AB0073808A /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF43BB452ED627AB0073808A /* UIApplication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1330,6 +1331,7 @@
 		FDFD2CFB25D525B100C064F7 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FDFEAE81267F7978006FA27B /* CurrencyFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		FDFEAE96267F7AA4006FA27B /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		FF43BB452ED627AB0073808A /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2537,6 +2539,7 @@
 		DBCA382E225E8BA900CD4137 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FF43BB452ED627AB0073808A /* UIApplication.swift */,
 				DB9A112B22E276760012B0B4 /* Array.swift */,
 				988547CF22970FA1007B312C /* Date.swift */,
 				DBC8404322D463CA00178B64 /* HyperwalletCountry.swift */,
@@ -3885,6 +3888,7 @@
 				DBC199F122E29CD0004447DD /* GenericCell.swift in Sources */,
 				2E3B047D237241B200BB1FFE /* InsightsTags.swift in Sources */,
 				DBC199F222E29CD0004447DD /* GenericController.swift in Sources */,
+				FF43BB462ED627AB0073808A /* UIApplication.swift in Sources */,
 				DBC199F322E29CD0004447DD /* HyperwalletBundle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
