@@ -43,27 +43,32 @@ public class ThemeManager: NSObject {
     public static func applyToUINavigationBar() {
         let proxy = UINavigationBar.appearance()
         if #available(iOS 11.0, *) {
-            proxy.largeTitleTextAttributes =
-                [
-                    NSAttributedString.Key.foregroundColor: Theme.NavigationBar.largeTitleColor,
-                    NSAttributedString.Key.font: Theme.NavigationBar.titleFont
-                ]
+            proxy.largeTitleTextAttributes = [
+                NSAttributedString.Key.foregroundColor: Theme.NavigationBar.largeTitleColor,
+                NSAttributedString.Key.font: Theme.NavigationBar.largeTitleFont
+            ]
         }
+        // iOS 26 bug: UINavigationBarAppearance with backgroundColor causes the large title to be hidden.
+        // On iOS 26, skip appearance and use legacy proxy properties (barTintColor, largeTitleTextAttributes).
         if #available(iOS 13.0, *) {
-            let navBarAppearance = UINavigationBarAppearance()
-            navBarAppearance.titleTextAttributes =
-                [
-                    NSAttributedString.Key.foregroundColor: Theme.NavigationBar.titleColor,
-                    NSAttributedString.Key.font: Theme.NavigationBar.titleFont
-                ]
-            navBarAppearance.largeTitleTextAttributes =
-                [
-                    NSAttributedString.Key.foregroundColor: Theme.NavigationBar.largeTitleColor,
-                    NSAttributedString.Key.font: Theme.NavigationBar.largeTitleFont
-                ]
-            navBarAppearance.backgroundColor = Theme.themeColor
-            proxy.standardAppearance = navBarAppearance
-            proxy.scrollEdgeAppearance = navBarAppearance
+            if #available(iOS 26.0, *) {
+                // iOS 26: skip UINavigationBarAppearance to avoid large title bug
+            } else {
+                let navBarAppearance = UINavigationBarAppearance()
+                navBarAppearance.titleTextAttributes =
+                    [
+                        NSAttributedString.Key.foregroundColor: Theme.NavigationBar.titleColor,
+                        NSAttributedString.Key.font: Theme.NavigationBar.titleFont
+                    ]
+                navBarAppearance.largeTitleTextAttributes =
+                    [
+                        NSAttributedString.Key.foregroundColor: Theme.NavigationBar.largeTitleColor,
+                        NSAttributedString.Key.font: Theme.NavigationBar.largeTitleFont
+                    ]
+                navBarAppearance.backgroundColor = Theme.themeColor
+                proxy.standardAppearance = navBarAppearance
+                proxy.scrollEdgeAppearance = navBarAppearance
+            }
         }
         proxy.barTintColor = Theme.themeColor
         proxy.tintColor = Theme.tintColor

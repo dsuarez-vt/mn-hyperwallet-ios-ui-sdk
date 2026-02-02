@@ -27,7 +27,26 @@ public extension UIViewController {
     ///   - title: title displayed
     func titleDisplayMode(_ mode: UINavigationItem.LargeTitleDisplayMode, for title: String?) {
         let currentNavigationItem: UINavigationItem = self.tabBarController?.navigationItem ?? self.navigationItem
-        currentNavigationItem.title = title
+        print(":: title \(title)")
+
+        if let title = title {
+            currentNavigationItem.title = title
+        }
+
+        if #available(iOS 26.0, *), let title = title {
+            currentNavigationItem.largeTitle = title
+                    print("26 block :: title \(title)")
+
+            // iOS 26: Re-apply after layout to work around bug where large title disappears
+            // during table view layout (e.g. when reloadData is called)
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                let item = self.tabBarController?.navigationItem ?? self.navigationItem
+                item.title = title
+                item.largeTitle = title
+            }
+        }
+
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             currentNavigationItem.largeTitleDisplayMode = mode
